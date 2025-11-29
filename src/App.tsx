@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Flame, Menu, X, Music, Check, MapPin, Mail, 
   Instagram, Facebook, Youtube, ChevronDown, 
-  Calendar, Star, DollarSign, User, Zap, Award, Sparkles
+  Calendar, Star, User, Award, Sparkles
 } from 'lucide-react';
 import RacheJpg from './assets/rachel.jpg'; 
 import Gallery from './Gallery';
