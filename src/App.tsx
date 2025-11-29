@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   Flame, Menu, X, Music, Check, MapPin, Mail, 
   Instagram, Facebook, Youtube, ChevronDown, 
-  Calendar, Star, DollarSign, User 
+  Calendar, Star, DollarSign, User, Zap, Award, Sparkles
 } from 'lucide-react';
 import RacheJpg from './assets/rachel.jpg'; 
+import Gallery from './Gallery';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -195,30 +196,73 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16 reveal">
                 <Music className="w-8 h-8 text-red-600 mx-auto mb-4" />
-                <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">Curated Programs</h2>
-                <p className="text-gray-400">Levels designed for every step of your journey.</p>
+                <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">Dance Levels</h2>
+                <p className="text-gray-400">Three progressive levels to develop your salsa skills from beginner to advanced.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Class Card Component */}
-                {[
-                  { title: "Salsa Foundations", level: "01", img: "https://images.unsplash.com/photo-1537365684968-8a0358f4452e?q=80&w=800&auto=format&fit=crop", desc: "Master basic steps, timing, and fundamental turns." },
-                  { title: "Social Flow", level: "02", img: "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?q=80&w=800&auto=format&fit=crop", desc: "Expand vocabulary with intricate turn patterns & styling.", popular: true },
-                  { title: "All-Star Mastery", level: "03", img: "https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=800&auto=format&fit=crop", desc: "Performance technique taught exclusively by Rachel." }
-                ].map((cls, idx) => (
-                  <div key={idx} className="group relative bg-neutral-950 border border-white/5 hover:border-red-600/50 transition-all duration-300 overflow-hidden reveal">
-                      {cls.popular && <div className="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-3 py-1 uppercase tracking-widest z-10">Popular</div>}
-                      <div className="h-64 overflow-hidden">
-                          <img src={cls.img} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100" alt={cls.title} />
-                      </div>
-                      <div className="p-8">
-                          <p className="text-yellow-600 text-xs font-bold tracking-widest uppercase mb-2">Level {cls.level}</p>
-                          <h3 className="font-serif text-2xl text-white mb-4">{cls.title}</h3>
-                          <p className="text-gray-400 text-sm mb-6 leading-relaxed">{cls.desc}</p>
-                          <a href="#contact" className="inline-block text-white border-b border-red-600 pb-1 hover:text-red-600 transition-colors">Book Now &rarr;</a>
-                      </div>
-                  </div>
-                ))}
+                {/* Class Card 1 - Foundations */}
+                <div className="group relative bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border border-yellow-600/30 hover:border-yellow-600/60 transition-all duration-300 overflow-hidden reveal p-8 rounded-lg">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-600 rounded-full opacity-5 -mr-16 -mt-16 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-yellow-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div className="relative z-10">
+                        <div className="w-14 h-14 bg-yellow-600/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-yellow-600/40 transition-colors">
+                            <Music className="w-7 h-7 text-yellow-600" />
+                        </div>
+                        <p className="text-yellow-600 text-xs font-bold tracking-widest uppercase mb-2">Beginner</p>
+                        <h3 className="font-serif text-2xl text-white mb-4 group-hover:text-yellow-600 transition-colors">Salsa Foundations</h3>
+                        <p className="text-gray-400 text-sm mb-6 leading-relaxed">Learn the essential steps, timing, and rhythms. Perfect for those starting their salsa journey with no prior dance experience.</p>
+                        <ul className="space-y-2 mb-6 text-gray-400 text-sm">
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" /> Basic step patterns</li>
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" /> Partner positioning</li>
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" /> Musical timing</li>
+                        </ul>
+                        <a href="#contact" className="inline-block text-white border-b border-yellow-600 pb-1 hover:text-yellow-600 transition-colors font-bold">Explore &rarr;</a>
+                    </div>
+                </div>
+
+                {/* Class Card 2 - Intermediate */}
+                <div className="group relative bg-gradient-to-br from-red-950 via-neutral-950 to-neutral-900 border-2 border-red-600/50 hover:border-red-600 transition-all duration-300 overflow-hidden reveal p-8 rounded-lg">
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-red-600 rounded-full opacity-10 -mr-20 -mt-20 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div className="relative z-10">
+                        <div className="w-14 h-14 bg-red-600/30 rounded-full flex items-center justify-center mb-6 group-hover:bg-red-600/50 transition-colors">
+                            <Sparkles className="w-7 h-7 text-red-600" />
+                        </div>
+                        <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-2">Intermediate</p>
+                        <h3 className="font-serif text-2xl text-white mb-4 group-hover:text-red-400 transition-colors">Social Flow</h3>
+                        <p className="text-gray-300 text-sm mb-6 leading-relaxed">Develop complex combinations and sophisticated styling. Build confidence to dance socially with advanced techniques.</p>
+                        <ul className="space-y-2 mb-6 text-gray-300 text-sm">
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" /> Complex turn sequences</li>
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" /> Styling & body movement</li>
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" /> Social dancing skills</li>
+                        </ul>
+                        <a href="#contact" className="inline-block text-white border-b border-red-600 pb-1 hover:text-red-400 transition-colors font-bold">Explore &rarr;</a>
+                    </div>
+                </div>
+
+                {/* Class Card 3 - All-Star Mastery */}
+                <div className="group relative bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border border-red-700/30 hover:border-red-600/60 transition-all duration-300 overflow-hidden reveal p-8 rounded-lg">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-red-700 rounded-full opacity-5 -mr-16 -mt-16 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-red-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div className="relative z-10">
+                        <div className="w-14 h-14 bg-red-700/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-red-700/40 transition-colors">
+                            <Award className="w-7 h-7 text-red-600" />
+                        </div>
+                        <p className="text-red-600 text-xs font-bold tracking-widest uppercase mb-2">Advanced</p>
+                        <h3 className="font-serif text-2xl text-white mb-4 group-hover:text-red-400 transition-colors">All-Star Mastery</h3>
+                        <p className="text-gray-400 text-sm mb-6 leading-relaxed">Master elite techniques and performance excellence taught by Rachel. Perfect for dancers ready for competition.</p>
+                        <ul className="space-y-2 mb-6 text-gray-400 text-sm">
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" /> Competition choreography</li>
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" /> Performance mastery</li>
+                            <li className="flex gap-2"><Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" /> Advanced technique refinement</li>
+                        </ul>
+                        <a href="#contact" className="inline-block text-white border-b border-red-600 pb-1 hover:text-red-600 transition-colors font-bold">Explore &rarr;</a>
+                    </div>
+                </div>
             </div>
         </div>
       </section>
@@ -299,6 +343,9 @@ const App = () => {
         <h2 className="relative z-10 font-serif text-3xl md:text-5xl text-white italic text-center px-4">"Dance is the hidden language of the soul."</h2>
       </div>
 
+       {/* Gallery Section */}
+      <Gallery />
+
       {/* Contact & Booking */}
       <section id="contact" className="py-24 bg-neutral-900 border-t border-white/5 relative">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -314,14 +361,14 @@ const App = () => {
                     <MapPin className="w-6 h-6 text-yellow-600 mt-1" />
                     <div>
                       <h4 className="text-white font-bold">Studio Location</h4>
-                      <p className="text-gray-500">123 Rhythm Blvd, Arts District<br/>Miami, FL 33101, USA</p>
+                      <p className="text-gray-500">IGUANA BARKANIA SPORT BAR <br />4824 14TH'ST W, BRADENTON, FL 34208</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Mail className="w-6 h-6 text-yellow-600 mt-1" />
                     <div>
                       <h4 className="text-white font-bold">Email Us</h4>
-                      <p className="text-gray-500">dance@bailaconmigo-usa.com</p>
+                      <p className="text-gray-500">racheldance251@gmail.com</p>
                     </div>
                   </div>
                 </div>
@@ -381,6 +428,8 @@ const App = () => {
         </div>
       </section>
 
+     
+
       {/* Footer */}
       <footer className="bg-neutral-950 py-12 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 text-center">
@@ -390,9 +439,9 @@ const App = () => {
                     BAILA<span className="text-red-600">CONMIGO</span>
                 </span>
             </div>
-            <p className="text-gray-600 text-sm mb-6">&copy; 2023 Baila Conmigo Dance Academy. All rights reserved.</p>
+            <p className="text-gray-600 text-sm mb-6">&copy; 2025 Baila Conmigo Dance Academy. All rights reserved.</p>
             <div className="flex justify-center gap-6">
-                <a href="#" className="text-gray-500 hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
+                <a href="https://www.facebook.com/profile.php?id=61572234943840&sk=photos&locale=ms_MY" className="text-gray-500 hover:text-white transition-colors"><Facebook className="w-5 h-5" /></a>
                 <a href="#" className="text-gray-500 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></a>
                 <a href="#" className="text-gray-500 hover:text-white transition-colors"><Youtube className="w-5 h-5" /></a>
             </div>
