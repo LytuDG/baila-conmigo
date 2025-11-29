@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import {
-  Flame,
   Menu,
   X,
   Music,
@@ -18,6 +17,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import RacheJpg from "./assets/rachel.jpg";
+import Logo from "./assets/logo-transparent.png";
 import Gallery from "./Gallery";
 
 const App = () => {
@@ -80,18 +80,26 @@ const App = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-24">
             {/* Logo */}
             <div
-              className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+              className="flex-shrink-0 flex items-center gap-3 cursor-pointer group"
               onClick={() => window.scrollTo(0, 0)}
             >
-              <Flame className="text-red-600 w-6 h-6" />
-              <span className="font-serif text-2xl font-bold tracking-widest text-white">
-                BAILA<span className="text-red-600">CONMIGO</span>
-              </span>
+              <img
+                src={Logo}
+                alt="Baila Conmigo"
+                className="h-16 w-auto object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="flex flex-col leading-none">
+                <span className="font-serif text-2xl font-bold tracking-[0.2em] text-white group-hover:text-red-500 transition-colors duration-300">
+                  BAILA
+                </span>
+                <span className="font-serif text-2xl font-bold tracking-[0.2em] text-red-600 group-hover:text-white transition-colors duration-300">
+                  CONMIGO
+                </span>
+              </div>
             </div>
-
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8 items-center">
               {["Home", "The All-Star", "Classes", "Membership", "Studio"].map(
@@ -112,7 +120,6 @@ const App = () => {
                 Book Class
               </a>
             </div>
-
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center">
               <button
@@ -694,11 +701,20 @@ const App = () => {
       {/* Footer */}
       <footer className="bg-neutral-950 py-12 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="flex justify-center items-center gap-2 mb-6">
-            <Flame className="text-red-600 w-5 h-5" />
-            <span className="font-serif text-xl font-bold tracking-widest text-white">
-              BAILA<span className="text-red-600">CONMIGO</span>
-            </span>
+          <div className="flex flex-col items-center mb-6 group cursor-pointer">
+            <img
+              src={Logo}
+              alt="Baila Conmigo"
+              className="h-16 w-auto object-contain mb-4 opacity-90 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+            />
+            <div className="flex gap-2">
+              <span className="font-serif text-2xl font-bold tracking-[0.2em] text-white group-hover:text-red-500 transition-colors duration-300">
+                BAILA
+              </span>
+              <span className="font-serif text-2xl font-bold tracking-[0.2em] text-red-600 group-hover:text-white transition-colors duration-300">
+                CONMIGO
+              </span>
+            </div>
           </div>
           <p className="text-gray-600 text-sm mb-6">
             &copy; 2025 Baila Conmigo Dance Academy. All rights reserved.
