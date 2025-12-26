@@ -8,7 +8,6 @@ import {
   Mail,
   Instagram,
   Facebook,
-  Youtube,
   ChevronDown,
   Calendar,
   Star,
@@ -23,7 +22,6 @@ import Gallery from "./Gallery";
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [bookingType, setBookingType] = useState("group"); // 'group' or 'private'
 
   // Handle scroll effect for navbar
   useEffect(() => {
@@ -69,6 +67,10 @@ const App = () => {
         .texture-overlay {
           background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
         }
+        
+        .logo-visibility {
+          filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+        }
       `}</style>
 
       {/* Navigation */}
@@ -88,36 +90,40 @@ const App = () => {
             >
               <img
                 src={Logo}
-                alt="Baila Conmigo"
-                className="h-16 w-auto object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-110"
+                alt="Ahora Baila"
+                className="h-16 w-auto object-contain logo-visibility transition-transform duration-300 group-hover:scale-110"
               />
               <div className="flex flex-col leading-none">
                 <span className="font-serif text-2xl font-bold tracking-[0.2em] text-white group-hover:text-red-500 transition-colors duration-300">
-                  BAILA
+                  AHORA
                 </span>
                 <span className="font-serif text-2xl font-bold tracking-[0.2em] text-red-600 group-hover:text-white transition-colors duration-300">
-                  CONMIGO
+                  BAILA
                 </span>
               </div>
             </div>
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8 items-center">
-              {["Home", "The All-Star", "Classes", "Membership", "Studio"].map(
-                (item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase().replace(" ", "-")}`}
-                    className="text-sm uppercase tracking-widest hover:text-red-600 transition-colors duration-300"
-                  >
-                    {item}
-                  </a>
-                )
-              )}
+              {[
+                { name: "Home", href: "#home" },
+                { name: "Biography", href: "#the-all-star" },
+                { name: "Philosophy", href: "#concept" },
+                { name: "Classes", href: "#classes" },
+                { name: "Membership", href: "#membership" },
+              ].map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm uppercase tracking-widest hover:text-red-600 transition-colors duration-300"
+                >
+                  {item.name}
+                </a>
+              ))}
               <a
                 href="#contact"
                 className="px-6 py-2 border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black transition-all duration-300 text-sm uppercase tracking-widest font-bold"
               >
-                Book Class
+                Book Now
               </a>
             </div>
             {/* Mobile Menu Button */}
@@ -140,18 +146,23 @@ const App = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-neutral-900 border-b border-white/10 animate-fadeIn">
             <div className="px-4 pt-2 pb-8 space-y-4 flex flex-col items-center">
-              {["Home", "The All-Star", "Classes", "Membership", "Contact"].map(
-                (item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase().replace(" ", "-")}`}
-                    className="block px-3 py-2 text-base font-medium hover:text-red-600"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item}
-                  </a>
-                )
-              )}
+              {[
+                { name: "Home", href: "#home" },
+                { name: "Biography", href: "#the-all-star" },
+                { name: "Philosophy", href: "#concept" },
+                { name: "Classes", href: "#classes" },
+                { name: "Membership", href: "#membership" },
+                { name: "Contact", href: "#contact" },
+              ].map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block px-3 py-2 text-base font-medium hover:text-red-600"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
             </div>
           </div>
         )}
@@ -173,18 +184,18 @@ const App = () => {
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16 animate-fade-in-up">
           <p className="text-yellow-600 tracking-[0.3em] uppercase text-sm md:text-base mb-4">
-            US Salsa Academy
+            Salsa Dance Academy
           </p>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 drop-shadow-2xl">
-            Feel the Rhythm, <br />
+            To Dance is <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-400 italic">
-              Ignite the Soul
+              to Live
             </span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light drop-shadow-md">
-            Experience world-class salsa instruction led by{" "}
-            <strong className="text-white">All-Star Rachel Ortiz</strong>. Where
-            technique meets passion on the dance floor.
+            Share the rhythm, technique, and authentic essence of salsa with{" "}
+            <strong className="text-white">Rachel Ortiz</strong>. At Ahora
+            Baila, dancing is much more than movement.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
             <a
@@ -194,7 +205,7 @@ const App = () => {
               View Plans
             </a>
             <a
-              href="#about"
+              href="#the-all-star"
               className="px-8 py-4 border border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
             >
               Meet Rachel
@@ -220,7 +231,7 @@ const App = () => {
               <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-yellow-600/50"></div>
               <img
                 src={RacheJpg}
-                alt="Rachel Ortiz - Professional Salsa Dancer and Founder of Baila Conmigo Dance Academy in Bradenton Florida"
+                alt="Rachel Ortiz - Fundadora de Ahora Baila"
                 className="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl"
               />
 
@@ -237,37 +248,46 @@ const App = () => {
               <div className="flex items-center gap-4 mb-6">
                 <span className="h-px w-12 bg-red-600"></span>
                 <span className="text-red-600 uppercase tracking-widest text-sm font-bold">
-                  The Visionary
+                  Biography
                 </span>
               </div>
               <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-white">
-                From the <span className="text-yellow-600">All-Star</span> Stage{" "}
-                <br />
-                to Your Studio
+                Passion, Art and{" "}
+                <span className="text-yellow-600">Salsa Culture</span>
               </h2>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                With over 15 years of professional experience competing on
-                global stages, Rachel Ortiz brings the precision of a competitor
-                and the soul of a true Salsera to her students.
-              </p>
-              <p className="text-gray-400 mb-8 leading-relaxed">
-                After retiring from the All-Star circuit, Rachel founded{" "}
-                <em>Baila Conmigo</em> in the heart of the USA with a simple
-                mission: to empower students to find their own style through the
-                art of Salsa.
-              </p>
+              <div className="text-gray-400 mb-6 leading-relaxed space-y-4">
+                <p>
+                  From a very young age, Rachel discovered her deep connection
+                  with music, dance, and culture. Her training began in
+                  childhood, taking ballet classes and later joining companies
+                  of flamenco, popular dance, gymnastics, and aerobics.
+                </p>
+                <p>
+                  In 2011, she joined the prestigious{" "}
+                  <strong>All Stars Santiago de Cuba</strong>, starting her
+                  professional career. She has participated in national and
+                  international shows and competitions, touring Europe, the USA,
+                  and Latin America.
+                </p>
+                <p>
+                  Rachel has shared the stage with figures like El Canario, El
+                  Septeto Santiaguero, and Habana de Primera. Today, she
+                  channels her passion into <strong>Ahora Baila</strong>,
+                  sharing the authentic essence of salsa.
+                </p>
+              </div>
+
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
-                  <p className="text-3xl font-serif text-white">15+</p>
+                  <p className="text-3xl font-serif text-white">14+</p>
                   <p className="text-xs text-gray-500 uppercase tracking-widest mt-1">
-                    Years Experience
+                    Years of Experience
                   </p>
                 </div>
                 <div>
-                  <p className="text-3xl font-serif text-white">200+</p>{" "}
-                  {/* Fixed: changed class="text-3xl" to className="text-3xl" */}
+                  <p className="text-3xl font-serif text-white">200+</p>
                   <p className="text-xs text-gray-500 uppercase tracking-widest mt-1">
-                    Students Taught
+                    Students
                   </p>
                 </div>
               </div>
@@ -276,8 +296,46 @@ const App = () => {
         </div>
       </section>
 
+      {/* Concept Section */}
+      <section
+        id="concept"
+        className="py-24 bg-neutral-900 texture-overlay relative"
+      >
+        <div className="max-w-4xl mx-auto px-4 text-center reveal">
+          <Sparkles className="w-10 h-10 text-yellow-600 mx-auto mb-6" />
+          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-8 text-white">
+            Our Philosophy
+          </h2>
+          <p className="text-xl text-gray-300 font-light italic mb-12">
+            "At Ahora Baila, to dance is to live."
+          </p>
+          <div className="space-y-6 text-gray-400 leading-relaxed text-lg text-justify md:text-center">
+            <p>
+              <strong>Ahora Baila</strong> was born from a deep vision: to share
+              the love for dance as an experience that transforms, liberates,
+              and connects. Its essence is founded on roots formed during a
+              14-year career, where energy was lived to the maximum and dance
+              was much more than movement: it was passion, dedication, and love.
+            </p>
+            <p>
+              For us, dance is therapy for the soul. Each class is a space to
+              enjoy, socialize, laugh, and reconnect. It is a safe place to make
+              mistakes and discover the satisfaction of reaching goals.
+            </p>
+            <p>
+              We believe in dance as a bridge that unites people. Here, friends
+              are made and a healthy recreational environment is fostered, where
+              good humor, joy, and camaraderie are essential.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Classes */}
-      <section id="classes" className="py-24 bg-neutral-900 texture-overlay">
+      <section
+        id="classes"
+        className="py-24 bg-neutral-950 texture-overlay border-t border-white/5"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 reveal">
             <Music className="w-8 h-8 text-red-600 mx-auto mb-4" />
@@ -285,8 +343,7 @@ const App = () => {
               Dance Levels
             </h2>
             <p className="text-gray-400">
-              Three progressive levels to develop your salsa skills from
-              beginner to advanced.
+              Develop your skills step by step, from basics to stage mastery.
             </p>
           </div>
 
@@ -304,17 +361,16 @@ const App = () => {
                   Beginner
                 </p>
                 <h3 className="font-serif text-2xl text-white mb-4 group-hover:text-yellow-600 transition-colors">
-                  Salsa Foundations
+                  Salsa Fundamentals
                 </h3>
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed">
                   Learn the essential steps, timing, and rhythms. Perfect for
-                  those starting their salsa journey with no prior dance
-                  experience.
+                  starting your dance journey with no prior experience.
                 </p>
                 <ul className="space-y-2 mb-6 text-gray-400 text-sm">
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" />{" "}
-                    Basic step patterns
+                    Basic steps
                   </li>
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" />{" "}
@@ -347,20 +403,20 @@ const App = () => {
                   Intermediate
                 </p>
                 <h3 className="font-serif text-2xl text-white mb-4 group-hover:text-red-400 transition-colors">
-                  Social Flow
+                  Social Style
                 </h3>
                 <p className="text-gray-300 text-sm mb-6 leading-relaxed">
-                  Develop complex combinations and sophisticated styling. Build
-                  confidence to dance socially with advanced techniques.
+                  Develop complex combinations and sophisticated styling. Gain
+                  confidence to dance socially with better technique.
                 </p>
                 <ul className="space-y-2 mb-6 text-gray-300 text-sm">
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />{" "}
-                    Complex turn sequences
+                    Complex turns
                   </li>
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />{" "}
-                    Styling & body movement
+                    Styling and body movement
                   </li>
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />{" "}
@@ -392,8 +448,8 @@ const App = () => {
                   All-Star Mastery
                 </h3>
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                  Master elite techniques and performance excellence taught by
-                  Rachel. Perfect for dancers ready for competition.
+                  Master elite techniques and stage excellence with Rachel.
+                  Perfect for dancers ready for competition.
                 </p>
                 <ul className="space-y-2 mb-6 text-gray-400 text-sm">
                   <li className="flex gap-2">
@@ -402,11 +458,11 @@ const App = () => {
                   </li>
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />{" "}
-                    Performance mastery
+                    Stage presence
                   </li>
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />{" "}
-                    Advanced technique refinement
+                    Advanced technical refinement
                   </li>
                 </ul>
                 <a
@@ -430,7 +486,7 @@ const App = () => {
               Invest in Yourself
             </span>
             <h2 className="font-serif text-4xl md:text-5xl font-bold mt-2 text-white">
-              Class Pricing
+              Pricing & Plans
             </h2>
           </div>
 
@@ -449,7 +505,7 @@ const App = () => {
               </div>
               <ul className="space-y-3 mb-8 text-gray-400 text-sm">
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-red-600" /> Pay as you go
+                  <Check className="w-4 h-4 text-red-600" /> Pay per visit
                 </li>
                 <li className="flex gap-2">
                   <Check className="w-4 h-4 text-red-600" /> Access to Level 1
@@ -461,7 +517,6 @@ const App = () => {
               </ul>
               <button
                 onClick={() => {
-                  setBookingType("group");
                   window.location.href = "#contact";
                 }}
                 className="w-full py-3 border border-white/20 text-white uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-black transition-all"
@@ -473,7 +528,7 @@ const App = () => {
             {/* Monthly Membership - Highlighted */}
             <div className="bg-neutral-800 border-2 border-red-600/50 p-8 relative transform md:-translate-y-4 shadow-2xl shadow-red-900/20 reveal">
               <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">
-                Best Value
+                Recommended
               </div>
               <div className="mb-4 bg-red-900/30 w-12 h-12 flex items-center justify-center rounded-full">
                 <Star className="text-red-500 w-6 h-6" />
@@ -503,12 +558,11 @@ const App = () => {
               </ul>
               <button
                 onClick={() => {
-                  setBookingType("group");
                   window.location.href = "#contact";
                 }}
                 className="w-full py-3 bg-red-600 text-white uppercase tracking-widest text-xs font-bold hover:bg-red-700 transition-all"
               >
-                Join Family
+                Join the Family
               </button>
             </div>
 
@@ -527,20 +581,19 @@ const App = () => {
               </div>
               <ul className="space-y-3 mb-8 text-gray-400 text-sm">
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-600" /> 1-on-1 with
+                  <Check className="w-4 h-4 text-yellow-600" /> 1 on 1 with
                   Rachel
                 </li>
                 <li className="flex gap-2">
                   <Check className="w-4 h-4 text-yellow-600" /> Personalized
-                  choreography
+                  Choreography
                 </li>
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-600" /> Competition prep
+                  <Check className="w-4 h-4 text-yellow-600" /> Competition Prep
                 </li>
               </ul>
               <button
                 onClick={() => {
-                  setBookingType("private");
                   window.location.href = "#contact";
                 }}
                 className="w-full py-3 border border-yellow-600 text-yellow-600 uppercase tracking-widest text-xs font-bold hover:bg-yellow-600 hover:text-black transition-all"
@@ -562,12 +615,49 @@ const App = () => {
       >
         <div className="absolute inset-0 bg-red-900/80 mix-blend-multiply"></div>
         <h2 className="relative z-10 font-serif text-3xl md:text-5xl text-white italic text-center px-4">
-          "Dance is the hidden language of the soul."
+          "To dance is to live."
         </h2>
       </div>
 
       {/* Gallery Section */}
       <Gallery />
+
+      {/* NEW SECTION: Follow Us */}
+      <section className="py-16 bg-neutral-950 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 text-center reveal">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600/10 border border-red-600/20 text-red-500 text-xs font-bold uppercase tracking-widest mb-6">
+            <Sparkles className="w-3 h-3" />
+            Stay Connected
+          </div>
+          <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
+            Follow Our Journey
+          </h2>
+          <p className="text-gray-400 mb-10 max-w-2xl mx-auto">
+            Get daily inspiration, class highlights, and join our growing
+            community of dance lovers on social media.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <a
+              href="https://www.instagram.com/ahora_baila93"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-8 py-4 bg-linear-to-tr from-yellow-400 via-red-500 to-purple-500 text-white font-bold rounded-lg shadow-xl hover:scale-105 transition-transform"
+            >
+              <Instagram className="w-6 h-6" />
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/share/1Cf2vGp3sh/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-8 py-4 bg-[#1877F2] text-white font-bold rounded-lg shadow-xl hover:scale-105 transition-transform"
+            >
+              <Facebook className="w-6 h-6" />
+              Facebook
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Contact & Booking */}
       <section
@@ -579,21 +669,21 @@ const App = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
                 <span className="text-red-600 uppercase tracking-widest text-sm font-bold">
-                  Join the Family
+                  Join Us
                 </span>
                 <h2 className="font-serif text-4xl text-white mb-6">
                   Start Your Journey
                 </h2>
                 <p className="text-gray-400 mb-8">
-                  Ready to step onto the floor? Fill out the form to schedule
-                  your first class or consultation with Rachel.
+                  Ready to start? Fill out the form to schedule your first class
+                  or consultation with Rachel.
                 </p>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <MapPin className="w-6 h-6 text-yellow-600 mt-1" />
                     <div>
-                      <h4 className="text-white font-bold">Studio Location</h4>
+                      <h4 className="text-white font-bold">Location</h4>
                       <p className="text-gray-500">
                         IGUANA BARKANIA SPORT BAR <br />
                         4824 14TH'ST W, BRADENTON, FL 34208
@@ -603,96 +693,37 @@ const App = () => {
                   <div className="flex items-start gap-4">
                     <Mail className="w-6 h-6 text-yellow-600 mt-1" />
                     <div>
-                      <h4 className="text-white font-bold">Email Us</h4>
-                      <p className="text-gray-500">racheldance251@gmail.com</p>
+                      <h4 className="text-white font-bold">Email</h4>
+                      <p className="text-gray-500">
+                        ortizreyesrachel@gmail.com
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Dynamic Form */}
-              <form className="space-y-4">
-                {/* Service Type Toggle */}
-                <div className="flex mb-6 bg-neutral-900 p-1 rounded border border-white/10">
-                  <button
-                    type="button"
-                    onClick={() => setBookingType("group")}
-                    className={`flex-1 py-2 text-xs uppercase font-bold tracking-widest transition-all ${
-                      bookingType === "group"
-                        ? "bg-red-700 text-white shadow"
-                        : "text-gray-500 hover:text-white"
-                    }`}
-                  >
-                    Group Class
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setBookingType("private")}
-                    className={`flex-1 py-2 text-xs uppercase font-bold tracking-widest transition-all ${
-                      bookingType === "private"
-                        ? "bg-yellow-600 text-black shadow"
-                        : "text-gray-500 hover:text-white"
-                    }`}
-                  >
-                    Private Quote
-                  </button>
-                </div>
-
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full bg-neutral-900 border border-neutral-700 text-white px-4 py-3 focus:outline-none focus:border-red-600 transition-colors"
-                    placeholder="Jane Doe"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full bg-neutral-900 border border-neutral-700 text-white px-4 py-3 focus:outline-none focus:border-red-600 transition-colors"
-                    placeholder="jane@example.com"
-                  />
-                </div>
-
-                {/* Conditional Fields based on booking type */}
-                {bookingType === "group" ? (
-                  <div>
-                    <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">
-                      Interested Plan
-                    </label>
-                    <select className="w-full bg-neutral-900 border border-neutral-700 text-white px-4 py-3 focus:outline-none focus:border-red-600 transition-colors">
-                      <option value="dropin">Single Class ($15)</option>
-                      <option value="monthly">Monthly Membership ($50)</option>
-                    </select>
-                  </div>
-                ) : (
-                  <div>
-                    <label className="block text-xs uppercase tracking-widest text-gray-500 mb-2">
-                      Goal / Request
-                    </label>
-                    <textarea
-                      className="w-full bg-neutral-900 border border-neutral-700 text-white px-4 py-3 focus:outline-none focus:border-yellow-600 transition-colors h-24"
-                      placeholder="E.g. Preparing for a wedding dance or competition..."
-                    ></textarea>
-                  </div>
-                )}
-
-                <button
-                  type="button"
-                  className={`w-full font-bold uppercase tracking-widest py-4 mt-4 transition-all shadow-lg hover:translate-y-px ${
-                    bookingType === "group"
-                      ? "bg-gradient-to-r from-red-600 to-red-800 text-white hover:shadow-red-900/40"
-                      : "bg-gradient-to-r from-yellow-600 to-yellow-700 text-black hover:shadow-yellow-900/40"
-                  }`}
+              {/* WhatsApp Redirect Section */}
+              <div className="flex flex-col justify-center items-center bg-neutral-900/50 p-8 border border-white/5 rounded-lg text-center reveal">
+                <Music className="w-12 h-12 text-red-600 mb-6 animate-pulse" />
+                <h3 className="text-2xl font-serif text-white mb-4">
+                  Chat with us on WhatsApp
+                </h3>
+                <p className="text-gray-400 mb-8 max-w-sm">
+                  The fastest way to book your class or get a private quote is
+                  by messaging Rachel directly.
+                </p>
+                <a
+                  href="https://wa.me/19417206619?text=Hello%20Rachel!%20I'm%20interested%20in%20learning%20salsa%20with%20Ahora%20Baila."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 bg-[#25D366] text-white font-bold uppercase tracking-widest rounded shadow-lg hover:shadow-[#25D366]/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3"
                 >
-                  {bookingType === "group" ? "Book Now" : "Request Quote"}
-                </button>
-              </form>
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.174.2-.298.3-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.011c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.877 1.213 3.075.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                  </svg>
+                  Message Rachel
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -704,39 +735,37 @@ const App = () => {
           <div className="flex flex-col items-center mb-6 group cursor-pointer">
             <img
               src={Logo}
-              alt="Baila Conmigo"
-              className="h-16 w-auto object-contain mb-4 opacity-90 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+              alt="Ahora Baila"
+              className="h-16 w-auto object-contain mb-4 opacity-90 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110 logo-visibility"
             />
             <div className="flex gap-2">
               <span className="font-serif text-2xl font-bold tracking-[0.2em] text-white group-hover:text-red-500 transition-colors duration-300">
-                BAILA
+                AHORA
               </span>
               <span className="font-serif text-2xl font-bold tracking-[0.2em] text-red-600 group-hover:text-white transition-colors duration-300">
-                CONMIGO
+                BAILA
               </span>
             </div>
           </div>
           <p className="text-gray-600 text-sm mb-6">
-            &copy; 2025 Baila Conmigo Dance Academy. All rights reserved.
+            &copy; 2025 Ahora Baila. All rights reserved.
           </p>
           <div className="flex justify-center gap-6">
             <a
-              href="https://www.facebook.com/profile.php?id=61572234943840&sk=photos&locale=ms_MY"
+              href="https://www.facebook.com/share/1Cf2vGp3sh/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-500 hover:text-white transition-colors"
             >
               <Facebook className="w-5 h-5" />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/ahora_baila93"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-500 hover:text-white transition-colors"
             >
               <Instagram className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-white transition-colors"
-            >
-              <Youtube className="w-5 h-5" />
             </a>
           </div>
         </div>
