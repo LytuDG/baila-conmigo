@@ -81,8 +81,21 @@ async function createServer() {
   return { app, vite };
 }
 
-createServer().then(({ app }) =>
-  app.listen(5173, () => {
-    console.log("http://localhost:5173");
-  })
-);
+const port = process.env.PORT || 5173;
+
+createServer().then(({ app }) => {
+  const server = app.listen(port, () => {
+    console.log(`Server started at http://localhost:${port}`);
+  });
+
+  server.on("error", (e) => {
+    if (e.code === "EADDRINUSE") {
+      console.error(
+        `Port ${port} is already in use. Please stop other servers or use a different port.`
+      );
+    } else {
+      console.error("Server error:", e);
+    }
+    process.exit(1);
+  });
+});
