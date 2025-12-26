@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import express from "express";
 import compression from "express-compression";
 
@@ -52,18 +52,18 @@ async function createServer() {
       let template, render;
       if (!isProd) {
         // always read fresh template in dev
-        template = fs.readFileSync(
-          path.resolve(__dirname, "index.html"),
-          "utf-8"
-        );
+        template = fs.readFileSync(path.resolve(root, "index.html"), "utf-8");
         template = await vite.transformIndexHtml(url, template);
         render = (await vite.ssrLoadModule("/src/entry-server.tsx")).render;
       } else {
         template = fs.readFileSync(
-          path.resolve(__dirname, "dist/client/index.html"),
+          path.resolve(root, "dist/client/index.html"),
           "utf-8"
         );
-        render = (await import("./dist/server/entry-server.js")).render;
+        const serverEntryPath = pathToFileURL(
+          path.resolve(root, "dist/server/entry-server.js")
+        ).href;
+        render = (await import(serverEntryPath)).render;
       }
 
       const { html: appHtml } = await render(url);
@@ -81,21 +81,25 @@ async function createServer() {
   return { app, vite };
 }
 
-const port = process.env.PORT || 5173;
+export { createServer };
 
-createServer().then(({ app }) => {
-  const server = app.listen(port, () => {
-    console.log(`Server started at http://localhost:${port}`);
-  });
+if (process.env.NODE_ENV !== "test" && !process.env.NETLIFY) {
+  const port = process.env.PORT || 5173;
 
-  server.on("error", (e) => {
-    if (e.code === "EADDRINUSE") {
-      console.error(
-        `Port ${port} is already in use. Please stop other servers or use a different port.`
-      );
-    } else {
-      console.error("Server error:", e);
-    }
-    process.exit(1);
+  createServer().then(({ app }) => {
+    const server = app.listen(port, () => {
+      console.log(`Server started at http://localhost:${port}`);
+    });
+
+    server.on("error", (e) => {
+      if (e.code === "EADDRINUSE") {
+        console.error(
+          `Port ${port} is already in use. Please stop other servers or use a different port.`
+        );
+      } else {
+        console.error("Server error:", e);
+      }
+      process.exit(1);
+    });
   });
-});
+}
