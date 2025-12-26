@@ -4,40 +4,52 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://bailaconmigo.dance/</loc>
-    <lastmod>2025-11-29</lastmod>
+    <loc>https://ahorabaila.dance/</loc>
+    <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ahorabaila.dance/logo-og.png</image:loc>
+      <image:title>Ahora Baila - Salsa Dance Academy Logo</image:title>
+    </image:image>
   </url>
   
-  <!-- About Section -->
+  <!-- Biography Section -->
   <url>
-    <loc>https://bailaconmigo.dance/#the-all-star</loc>
-    <lastmod>2025-11-29</lastmod>
+    <loc>https://ahorabaila.dance/#the-all-star</loc>
+    <lastmod>2025-12-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
+  <!-- Philosophy Section -->
+  <url>
+    <loc>https://ahorabaila.dance/#concept</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Classes Section -->
   <url>
-    <loc>https://bailaconmigo.dance/#classes</loc>
-    <lastmod>2025-11-29</lastmod>
+    <loc>https://ahorabaila.dance/#classes</loc>
+    <lastmod>2025-12-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <!-- Membership Section -->
   <url>
-    <loc>https://bailaconmigo.dance/#membership</loc>
-    <lastmod>2025-11-29</lastmod>
+    <loc>https://ahorabaila.dance/#membership</loc>
+    <lastmod>2025-12-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <!-- Contact Section -->
   <url>
-    <loc>https://bailaconmigo.dance/#contact</loc>
-    <lastmod>2025-11-29</lastmod>
+    <loc>https://ahorabaila.dance/#contact</loc>
+    <lastmod>2025-12-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

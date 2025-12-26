@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://bailaconmigo.dance/sitemap.xml
+Sitemap: https://ahorabaila.dance/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
