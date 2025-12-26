@@ -4,16 +4,25 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "node server.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "cross-env NODE_ENV=production node server.js",
+    "start:prod": "node dist/server/entry-server.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
+    "@types/compression": "^1.8.1",
+    "@types/express": "^5.0.6",
+    "@types/serve-static": "^2.2.0",
+    "express": "^5.2.1",
+    "express-compression": "^1.0.2",
     "lucide-react": "^0.555.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "serve-static": "^2.2.1",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
@@ -22,6 +31,7 @@
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
