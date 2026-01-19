@@ -381,12 +381,6 @@ const App = () => {
                     Musical timing
                   </li>
                 </ul>
-                <a
-                  href="#contact"
-                  className="inline-block text-white border-b border-yellow-600 pb-1 hover:text-yellow-600 transition-colors font-bold"
-                >
-                  Explore &rarr;
-                </a>
               </div>
             </div>
 
@@ -423,16 +417,10 @@ const App = () => {
                     Social dancing skills
                   </li>
                 </ul>
-                <a
-                  href="#contact"
-                  className="inline-block text-white border-b border-red-600 pb-1 hover:text-red-400 transition-colors font-bold"
-                >
-                  Explore &rarr;
-                </a>
               </div>
             </div>
 
-            {/* Class Card 3 - All-Star Mastery */}
+            {/* Class Card 3 - Advanced */}
             <div className="group relative bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border border-red-700/30 hover:border-red-600/60 transition-all duration-300 overflow-hidden reveal p-8 rounded-lg">
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-700 rounded-full opacity-5 -mr-16 -mt-16 group-hover:opacity-10 transition-opacity duration-300"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-red-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -445,32 +433,26 @@ const App = () => {
                   Advanced
                 </p>
                 <h3 className="font-serif text-2xl text-white mb-4 group-hover:text-red-400 transition-colors">
-                  All-Star Mastery
+                  Salsa Mastery
                 </h3>
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                  Master elite techniques and stage excellence with Rachel.
-                  Perfect for dancers ready for competition.
+                  Advanced turns, musical timing combinations, and unique
+                  styling.
                 </p>
                 <ul className="space-y-2 mb-6 text-gray-400 text-sm">
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />{" "}
-                    Competition choreography
+                    Choreographies
                   </li>
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />{" "}
-                    Stage presence
+                    Stage Presence
                   </li>
                   <li className="flex gap-2">
                     <Check className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />{" "}
-                    Advanced technical refinement
+                    Advanced Technique
                   </li>
                 </ul>
-                <a
-                  href="#contact"
-                  className="inline-block text-white border-b border-red-600 pb-1 hover:text-red-600 transition-colors font-bold"
-                >
-                  Explore &rarr;
-                </a>
               </div>
             </div>
           </div>
@@ -496,23 +478,18 @@ const App = () => {
               <div className="mb-4 bg-neutral-800 w-12 h-12 flex items-center justify-center rounded-full group-hover:bg-red-600 transition-colors">
                 <Calendar className="text-white w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">
-                Single Class
-              </h3>
+              <h3 className="text-xl font-bold text-white mb-2">Group Class</h3>
               <div className="flex items-baseline mb-6">
                 <span className="text-3xl font-serif text-yellow-500">$15</span>
                 <span className="text-gray-500 ml-2">/ class</span>
               </div>
               <ul className="space-y-3 mb-8 text-gray-400 text-sm">
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-red-600" /> Pay per visit
+                  <Check className="w-4 h-4 text-red-600" /> Single Group
+                  Session
                 </li>
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-red-600" /> Access to Level 1
-                  or 2
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-red-600" /> Valid for 30 days
+                  <Check className="w-4 h-4 text-red-600" /> Walk-ins Welcome
                 </li>
               </ul>
               <button
@@ -534,7 +511,7 @@ const App = () => {
                 <Star className="text-red-500 w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
-                Unlimited Access
+                Monthly Access
               </h3>
               <div className="flex items-baseline mb-6">
                 <span className="text-4xl font-serif text-white">$50</span>
@@ -542,18 +519,11 @@ const App = () => {
               </div>
               <ul className="space-y-3 mb-8 text-gray-300 text-sm">
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-500" /> Unlimited Group
+                  <Check className="w-4 h-4 text-yellow-500" /> Payment for 4
                   Classes
                 </li>
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-500" /> Priority Booking
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-500" /> Access to
-                  Socials
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-500" /> Cancel anytime
+                  <Check className="w-4 h-4 text-yellow-500" /> Best Value
                 </li>
               </ul>
               <button
@@ -576,20 +546,17 @@ const App = () => {
               </h3>
               <div className="flex items-baseline mb-6">
                 <span className="text-xl font-serif text-white italic">
-                  Custom Quote
+                  Personalized
                 </span>
               </div>
               <ul className="space-y-3 mb-8 text-gray-400 text-sm">
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-600" /> 1 on 1 with
+                  <Check className="w-4 h-4 text-yellow-600" /> 1-on-1 with
                   Rachel
                 </li>
                 <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-600" /> Personalized
-                  Choreography
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-yellow-600" /> Competition Prep
+                  <Check className="w-4 h-4 text-yellow-600" /> Tailored to your
+                  Goals
                 </li>
               </ul>
               <button
